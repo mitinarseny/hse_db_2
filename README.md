@@ -3,8 +3,8 @@
 ## Dependencies
 
 * `psql`
-* `jq`
-* `jg`
+* [`jq`](https://stedolan.github.io/jq)
+* [`jg`](https://github.com/mitinarseny/jg)
 
 ## Run
 
