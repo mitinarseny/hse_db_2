@@ -19,7 +19,22 @@ docker-compose up -d
 
 ## 1
 
+> Создать базу данных, спроектированную в ходе выполнения предыдущей практической
+> работы, в любой SQL среде
+
 ```sh
+psql --host=localhost hse_user hse_user
+```
+
+```sql
+CREATE DATABASE hse_db;
+```
+
+```sh
+psql --host=localhost hse_db hse_user
+```
+
+```sql
 CREATE TABLE IF NOT EXISTS cities (
   id   UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name VARCHAR(40)
@@ -60,6 +75,8 @@ CREATE TABLE IF NOT EXISTS plays_actors (
 ```
 
 ## 3
+
+> Импортировать и экспортировать данные в созданную базу с использованием средств языка SQL
 
 ```sh
 # cat ./fill_tables.sh
@@ -120,6 +137,9 @@ done | pg_cmd 'COPY plays_actors(play_id, actor_id, lead) FROM STDIN'
 ```
 
 ## 4
+
+> Сформировать запросы к построенной базе данных информационной системы в
+> соответствии с выбранной моделью и заданием №2 предыдущей практической работы
 
 ### 1
 Получить список ведущих артистов всех театров
@@ -225,6 +245,8 @@ WHERE A.last_name = AU.last_name;
 
 ## 5
 
+> Создать хранимую процедуру по внесению новой записи в любое отношение
+
 ```sql
 CREATE OR REPLACE PROCEDURE create_actor(
   first_name actors.first_name%TYPE,
@@ -245,6 +267,9 @@ $$;
 ```
 
 ## 6
+
+> Создать набор пользователей БД и разграничение прав доступа к объектам БД для разных
+> пользователей (минимально 3 пользователя с разными правами)
 
 ```sql
 CREATE ROLE root WITH
@@ -280,6 +305,9 @@ TO viewer;
 ```
 
 ## 7
+
+> Настроить шифрование любого атрибута. Создать представление, возвращающее данные в
+> расшифрованном виде. Предусмотреть ограниченный доступ к этому представлению
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
@@ -320,11 +348,23 @@ INSERT INTO actors (
 GRANT SELECT
 ON actors_view
 TO admin;
+
+-- ROLE viewer still has access to definition of actors_view.
+-- It production, decryption key should not be kept in database
 ```
 
 ## 8
 
+> Создать резервную копию БД, удалить ее и восстановить БД по резервной копии
+
 ```sh
 pg_dump --host=localhost -U root hse_db > backup.db
+```
+
+```sql
+DROP DATABASE hse_db;
+```
+
+```sh
 psql --host=localhost -U root hse_db < backup.db
 ```

@@ -7,6 +7,5 @@ services:
       - 5432:5432
     restart: always
     environment:
-      POSTGRES_DB: hse_db
       POSTGRES_USER: hse_user
       POSTGRES_PASSWORD: hse_password
