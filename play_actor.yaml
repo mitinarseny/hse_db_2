@@ -1,0 +1,6 @@
+files:
+  actor_ids:
+
+root:
+  type: string
+  from: actor_ids

@@ -1,0 +1,13 @@
+files:
+  names:
+  city_ids:
+
+root:
+  type: object
+  fields:
+    name:
+      type: string
+      from: names
+    city_id:
+      type: string
+      from: city_ids

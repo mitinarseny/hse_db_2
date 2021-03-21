@@ -1,0 +1,5 @@
+files:
+  cities:
+root:
+  type: string
+  from: cities

@@ -1,0 +1,6 @@
+files:
+  last_names:
+
+root:
+  type: string
+  from: last_names

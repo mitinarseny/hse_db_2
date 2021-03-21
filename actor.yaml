@@ -1,0 +1,17 @@
+files:
+  first_names:
+  last_names:
+  city_ids:
+
+root:
+  type: object
+  fields:
+    first_name:
+      type: string
+      from: first_names
+    last_name:
+      type: string
+      from: last_names
+    city_id:
+      type: string
+      from: city_ids

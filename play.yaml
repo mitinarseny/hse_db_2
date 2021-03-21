@@ -1,0 +1,17 @@
+files:
+  names:
+  author_ids:
+  theater_ids:
+
+root:
+  type: object
+  fields:
+    name:
+      type: string
+      from: names
+    author_id:
+      type: string
+      from: author_ids
+    theater_id:
+      type: string
+      from: theater_ids
