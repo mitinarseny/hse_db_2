@@ -363,6 +363,7 @@ pg_dump --host=localhost -U root hse_db > backup.db
 
 ```sql
 DROP DATABASE hse_db;
+CREATE DATABASE hse_db;
 ```
 
 ```sh
