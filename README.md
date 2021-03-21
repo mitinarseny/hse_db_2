@@ -11,6 +11,11 @@
 ```sh
 docker-compose up -d
 ```
+> [#1] and [#3] can be done with:
+> ```sh
+> psql --host=localhost --port=5432 -f create_tables.sql hse_db hse_user
+> ./fill_tables.sh
+> ```
 
 ## 1
 
@@ -52,12 +57,6 @@ CREATE TABLE IF NOT EXISTS plays_actors (
 
   PRIMARY KEY (play_id, actor_id)
 );
-```
-
-```sh
-docker-compose up -d
-psql --host=localhost --port=5432 -f create_tables.sql hse_db hse_user
-./fill_tables.sh
 ```
 
 ## 3
